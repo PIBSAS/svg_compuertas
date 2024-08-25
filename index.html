@@ -9,29 +9,22 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            height: 100%; /* Asegurarse de que el body y html ocupen 100% de la altura */
         }
         svg {
             display: block;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
+            width: 100%; /* Ancho completo */
+            height: 100%; /* Alto completo */
         }
     </style>
 </head>
 <body>
 <!-- INICIO SVG -->
 <svg id="xnor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
-    <!-- Grilla -->
-    <g stroke="#CCCCCC" stroke-width="1">
-        <!-- Líneas verticales -->
-        <line x1="10" y1="0" x2="10" y2="1000"/>
-        <line x1="20" y1="0" x2="20" y2="1000"/>
-        <!-- Añadir más líneas según sea necesario -->
-        
-        <!-- Líneas horizontales -->
-        <line x1="0" y1="10" x2="1000" y2="10"/>
-        <line x1="0" y1="20" x2="1000" y2="20"/>
-        <!-- Añadir más líneas según sea necesario -->
-    </g>
+        <!-- Grilla -->
+        <g stroke="#CCCCCC" stroke-width="1"></g>
+
+    
 	<!-- COMPUERTA AND-->
 	<g stroke="#000000" stroke-width="2" fill="none">
 	<path d="M60 390 L90 390 A30 30 0 0 1 90 450 L60 450 Z"/>
@@ -115,5 +108,28 @@
     <!-- Repite para las demás compuertas -->
 </svg>
 <!-- FIN SVG -->
+<script>
+        const svg = document.getElementById("xnor").querySelector("g");
+
+        // Crear líneas verticales
+        for (let x = 10; x <= 990; x += 10) {
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", x);
+            line.setAttribute("y1", 0);
+            line.setAttribute("x2", x);
+            line.setAttribute("y2", 1000);
+            svg.appendChild(line);
+        }
+
+        // Crear líneas horizontales
+        for (let y = 10; y <= 990; y += 10) {
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", 0);
+            line.setAttribute("y1", y);
+            line.setAttribute("x2", 1000);
+            line.setAttribute("y2", y);
+            svg.appendChild(line);
+        }
+    </script>
 </body>
 </html>
